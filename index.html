@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f5">
+    <meta name="description" content="Turn a mood into a color palette, type pairing, and ready-to-use UI design system.">
+    <title>Mood-to-UI Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Moodboard home">
+          <span class="brand-mark" aria-hidden="true">m</span>
+          <span>moodboard<span class="brand-period">.</span></span>
+        </a>
+        <span class="topbar-note"><span class="status-dot" aria-hidden="true"></span> A little inspiration, on demand</span>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">YOUR CREATIVE STARTING POINT</p>
+          <h1 id="page-title">A feeling, <span>a fresh interface.</span></h1>
+          <p class="intro-copy">Pick a mood. Get a color story, a type pairing, and a tiny design system to make it real.</p>
+        </section>
+
+        <div class="workspace">
+          <aside class="controls-panel" aria-labelledby="mood-heading">
+            <div class="section-heading">
+              <span class="step-number">01</span>
+              <div>
+                <h2 id="mood-heading">Choose your mood</h2>
+                <p>What should your next idea feel like?</p>
+              </div>
+            </div>
+
+            <div class="mood-grid" role="group" aria-label="Choose a mood">
+              <button class="mood-button" type="button" data-mood="focused" aria-pressed="true"><span aria-hidden="true">◉</span> Focused</button>
+              <button class="mood-button" type="button" data-mood="playful" aria-pressed="false"><span aria-hidden="true">✳</span> Playful</button>
+              <button class="mood-button" type="button" data-mood="calm" aria-pressed="false"><span aria-hidden="true">◌</span> Calm</button>
+              <button class="mood-button" type="button" data-mood="chaotic" aria-pressed="false"><span aria-hidden="true">⁕</span> Chaotic</button>
+              <button class="mood-button" type="button" data-mood="cozy" aria-pressed="false"><span aria-hidden="true">⌂</span> Cozy</button>
+              <button class="mood-button" type="button" data-mood="bold" aria-pressed="false"><span aria-hidden="true">✦</span> Bold</button>
+            </div>
+
+            <button class="generate-button" id="generate-button" type="button">
+              <span>Generate design</span><span aria-hidden="true">↗</span>
+            </button>
+            <p class="variation-note"><span aria-hidden="true">✦</span> Every generation brings a fresh variation.</p>
+
+            <div class="side-note">
+              <span class="side-note-icon" aria-hidden="true">✳</span>
+              <p><strong>Start with a feeling.</strong><br>We'll take care of the visual direction.</p>
+            </div>
+          </aside>
+
+          <section class="preview-panel" aria-labelledby="preview-heading">
+            <div class="preview-heading-row">
+              <div class="section-heading">
+                <span class="step-number">02</span>
+                <div>
+                  <h2 id="preview-heading">Your design system</h2>
+                  <p id="mood-caption">A clear headspace for your next big idea.</p>
+                </div>
+              </div>
+              <span class="live-pill"><span class="status-dot" aria-hidden="true"></span> LIVE PREVIEW</span>
+            </div>
+
+            <div class="preview" id="preview" aria-live="polite" aria-atomic="true">
+              <div class="preview-topline">
+                <span class="preview-mood" id="preview-mood">FOCUSED</span>
+                <span class="preview-meta"><span class="sparkle" aria-hidden="true">✦</span> DESIGN RECIPE</span>
+              </div>
+
+              <section class="palette-section" aria-labelledby="palette-heading">
+                <div class="preview-section-title">
+                  <h3 id="palette-heading">Color palette</h3>
+                  <span>01 — 05</span>
+                </div>
+                <div class="swatches" id="swatches"></div>
+              </section>
+
+              <section class="type-section" aria-labelledby="type-heading">
+                <div class="preview-section-title">
+                  <h3 id="type-heading">Type pairing</h3>
+                  <span>HEADING + BODY</span>
+                </div>
+                <div class="type-preview" id="type-preview"></div>
+              </section>
+
+              <section class="sample-section" aria-labelledby="sample-heading">
+                <div class="preview-section-title">
+                  <h3 id="sample-heading">In the wild</h3>
+                  <span>A LITTLE PREVIEW</span>
+                </div>
+                <article class="sample-card" id="sample-card">
+                  <div class="sample-card-top">
+                    <span class="sample-tag" id="sample-tag">IN GOOD FLOW</span>
+                    <span class="sample-card-menu" aria-hidden="true">···</span>
+                  </div>
+                  <h4 id="sample-title">Make room for good ideas.</h4>
+                  <p id="sample-description">A calm place to gather your thoughts, find your focus, and let the next big thing take shape.</p>
+                  <div class="sample-card-actions">
+                    <button class="sample-primary" type="button">Get started <span aria-hidden="true">→</span></button>
+                    <button class="sample-secondary" type="button">Learn more</button>
+                  </div>
+                </article>
+              </section>
+
+              <section class="tokens-section" aria-labelledby="tokens-heading">
+                <div class="token-heading-row">
+                  <div class="preview-section-title">
+                    <h3 id="tokens-heading">Your CSS variables</h3>
+                    <span>READY TO USE</span>
+                  </div>
+                  <button class="copy-button" id="copy-button" type="button">
+                    <span aria-hidden="true">▢</span> Copy CSS
+                  </button>
+                </div>
+                <textarea id="css-output" class="css-output" aria-label="Generated CSS variables" readonly spellcheck="false"></textarea>
+                <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+              </section>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <span>Made for the moments before the first pixel.</span>
+        <span>MOODBOARD <span aria-hidden="true">✳</span> 2026</span>
+      </footer>
+    </div>
+  </body>
+</html>
